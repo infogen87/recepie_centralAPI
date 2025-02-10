@@ -2,7 +2,7 @@ from fastapi import APIRouter, HTTPException, Depends
 from database import SessionLocal, engine, Base, RecipeDB, UserDB
 from sqlalchemy.orm import Session
 from sqlalchemy import select
-from models import Ingredient, Recipe
+from models.recipe import Ingredient, Recipe
 from typing import List
 
 recipe_routes = APIRouter()

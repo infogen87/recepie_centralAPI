@@ -1,19 +1,34 @@
-from typing import List, Optional
+from pydantic import BaseModel, EmailStr
+import datetime
+from typing import Optional
 
-from pydantic import BaseModel
 
-class Ingredient(BaseModel):
-    name: str
-    quantity: str
 
-class Recipe(BaseModel):
-    id: Optional[int] = None
-    name: str
-    description: str
-    instructions: str
-    ingredients: List[Ingredient]
-    created_by: Optional[int] = None
-
-class User(BaseModel):
-    id: Optional[int] = None
+class UserBase(BaseModel):
     username: str
+    email: EmailStr
+    password: str
+    image_url: str
+    description: str
+    # created_at
+
+
+class CreateUser(BaseModel):
+    username: str
+    email: EmailStr
+    password: str
+
+
+
+class User(UserBase):
+    id: int
+
+
+class UpdateUser(BaseModel):
+    username: Optional[str] = None
+    image_url: Optional[str] = None
+    description: Optional[str] = None
+
+    
+      
+
